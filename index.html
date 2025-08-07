@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Study Buddy Reminder</title>
+
+  <!-- ✅ Link to the external CSS file -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>📖 Study Buddy</h1>
+    <p>Set a reminder to take a break or switch tasks!</p>
+
+    <label for="minutes">Remind me in:</label>
+    <input type="number" id="minutes" placeholder="Enter minutes" min="1">
+    <button onclick="setReminder()">Set Reminder</button>
+
+    <p id="message"></p>
+  </div>
+
+  <script>
+    function setReminder() {
+      const minutes = parseInt(document.getElementById('minutes').value);
+      const message = document.getElementById('message');
+
+      if (isNaN(minutes) || minutes <= 0) {
+        message.textContent = "⛔ Please enter a valid number of minutes.";
+        return;
+      }
+
+      message.textContent = `✅ Reminder set! You’ll be notified in ${minutes} minute(s).`;
+
+      setTimeout(() => {
+        alert("⏰ Time's up! Take a break or switch your study task!");
+      }, minutes * 60 * 1000);
+    }
+  </script>
+</body>
+</html>
